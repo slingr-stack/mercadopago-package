@@ -7,12 +7,13 @@
 
 let configurationBuilder = function (config) {
     config.oauth = {
-        id: 'installationInfo-Skeleton-User-'+sys.context.getCurrentUserRecord().id(),
-        authUrl: "https://example.com/login/oauth/authorize",
-        accessTokenUrl: "https://example.com/login/oauth/access_token",
-        clientId: config.choice,
-        clientSecret: config.text,
-        oauthCallback: config.SKELETON_API_BASE_URL
+        id: 'installationInfo-MercadoPago-User-'+sys.context.getCurrentUserRecord().id(),
+        authUrl: "https://auth.mercadopago.com/authorization",
+        accessTokenUrl: "https://api.mercadopago.com/oauth/token",
+        clientId: config.clientId,
+        clientSecret: config.clientSecret,
+        oauthCallback: config.oauthCallback,
+        scope: (config.refreshToken || config.refreshToken === "true") ? "offline_access" : ""
     }
     return config;
 }

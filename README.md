@@ -8,9 +8,9 @@
     </thead>
     <tbody>
     <tr>
-        <td>Skeleton package</td>
+        <td>Mercado Pago package</td>
         <td>January 3, 2024</td>
-        <td>Detailed description of the API of the Skeleton package.</td>
+        <td>Detailed description of the API of the Mercado Pago package.</td>
     </tr>
     </tbody>
 </table>
@@ -19,20 +19,17 @@
 
 # Javascript API
 
-The Javascript API of the skeleton package has two pieces:
+The Javascript API of the mercadopago package has two pieces:
 
 - **HTTP requests**
 - **Flow steps**
 
 ## HTTP requests
-You can make `GET`,`PUT`,`PATCH`,`DELETE` requests to the [skeleton API](API_URL_HERE) like this:
+You can make `GET`,`PUT`,`PATCH`,`DELETE` requests to the [mercadopago API](https://www.mercadopago.com.ar/developers/es/reference) like this:
 ```javascript
-var response = pkg.skeleton.api.get('/path3')
-var response = pkg.skeleton.api.put('/path1/:testPath', body)
-var response = pkg.skeleton.api.put('/path1/:testPath')
-var response = pkg.skeleton.api.patch('/path2?param2=' + httpOptions.query.param2 + '&param3=' + httpOptions.query.param3 + '', body)
-var response = pkg.skeleton.api.patch('/path2?param2=' + httpOptions.query.param2 + '&param3=' + httpOptions.query.param3 + '')
-var response = pkg.skeleton.api.delete('/path4')
+var response = pkg.mercadopago.api.get('/v1/payment_methods')
+var response = pkg.mercadopago.api.get('//merchant_orders/search')
+var response = pkg.mercadopago.api.post('/users/test', {description: "a description", site_id: "MLA"})
 ```
 
 Please take a look at the documentation of the [HTTP service](https://github.com/slingr-stack/http-service)
@@ -205,11 +202,12 @@ For more information about how shortcuts or flow steps work, and how they are ge
 
 ## Dependencies
 * HTTP Service (v1.6.2)
-* Oauth Package (v1.0.24) // TODO review and remove if its needed
+* Oauth Package (v1.0.24)
 
 ## About SLINGR
 
-SLINGR is a low-code rapid application development platform that accelerates development, with robust architecture for integrations and executing custom workflows and automation.
+SLINGR is a low-code rapid application development platform that speeds up development,
+with robust architecture for integrations and executing custom workflows and automation.
 
 [More info about SLINGR](https://slingr.io)
 

@@ -1,6 +1,6 @@
 {
-    "name": "skeleton",
-    "label": "Skeleton Package",
+    "name": "mercadopago",
+    "label": "Mercado Pago Package",
     "dependencies": [
         {
             "type": "service",
@@ -17,47 +17,40 @@
     "configurationBuilder": "/configurationBuilder.js",
     "configuration": [
         {
-            "name": "SKELETON_API_BASE_URL",
-            "label": "Skeleton Api Url",
+            "name": "MERCADO_PAGO_API_BASE_URL",
+            "label": "Mercado Pago Api Url",
             "type": "label",
-            "value": "https://example.com/"
+            "value": "https://api.mercadopago.com"
         },
         {
-            "name": "choice",
-            "label": "Choice",
-            "required": false,
-            "defaultValue": "true",
-            "type": "buttonsGroup",
-            "typeOptions": {
-                "allowCustom": true,
-                "possibleValues": [
-                    {
-                        "label": "True",
-                        "name": "true"
-                    },
-                    {
-                        "label": "False",
-                        "name": "false"
-                    },
-                    {
-                        "label": "Other",
-                        "name": "other"
-                    }
-                ]
-            }
+            "label": "Access Token",
+            "name": "accessToken",
+            "type": "text"
         },
         {
-            "name": "text",
-            "label": "Text",
-            "type": "text",
-            "required": "false",
-            "visibility": "config.choice == 'true'"
+            "label": "Client Id",
+            "name": "clientId",
+            "required": "true",
+            "type": "text"
         },
         {
-            "name": "info",
-            "label": "info",
+            "label": "Client Secret",
+            "name": "clientSecret",
+            "required": "true",
+            "type": "text"
+        },
+        {
+            "name": "oauthCallback",
+            "label": "OAuth callback",
+            "description": "The OAuth callback to configure in your MercadoPago App",
             "type": "label",
-            "value": "'info'"
+            "value": "config.AUTH_CALLBACK_URL+'/authCallback'"
+        },
+        {
+            "name": "refreshToken",
+            "label": "Internal variable to refresh token",
+            "type": "label",
+            "value": "false"
         }
     ],
     "events": [
@@ -85,18 +78,8 @@
         },
         {
             "type": "flowStep",
-            "namespace": "apiCallSkeleton",
-            "path": "/flowSteps/apiCallSkeleton"
-        },
-        {
-            "type": "flowStep",
-            "namespace": "customFlow",
-            "path": "/flowSteps/customFlow"
-        },
-        {
-            "type": "uiService",
-            "namespace": "testUiService",
-            "path": "/uiServices/testUiService"
+            "namespace": "apiCallMercadoPago",
+            "path": "/flowSteps/apiCallMercadoPago"
         }
     ]
 }
