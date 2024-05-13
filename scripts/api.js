@@ -267,7 +267,6 @@ let stringType = Function.prototype.call.bind(Object.prototype.toString)
 let MercadoPago = function (options) {
     options = options || {};
     options= setApiUri(options);
-    options= setAuthorization(options);
     options= setRequestHeaders(options);
     return options;
 }

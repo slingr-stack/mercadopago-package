@@ -58,7 +58,6 @@ step.apiCallMercadoPago = function (inputs) {
 	}
 
 	options= setApiUri(options);
-	options= setAuthorization(options);
 	options= setRequestHeaders(options);
 
 	switch (inputsLogic.method.toLowerCase()) {
@@ -129,19 +128,8 @@ function setApiUri(options) {
 function setRequestHeaders(options) {
 	var headers = options.headers || {};
 	headers = mergeJSON(headers, {"Content-Type": "application/json"});
+	headers = mergeJSON(headers, {"Authorization": "Bearer " + config.get("accessToken")});
 	options.headers = headers;
-	return options;
-}
-
-function setAuthorization(options) {
-	sys.logs.debug('[mercadopago] Setting header token oauth');
-	var authorization = options.authorization || {};
-	authorization = mergeJSON(authorization, {
-		type: "oauth2",
-		accessToken: config.get("accessToken"),
-		headerPrefix: "Bearer"
-	});
-	options.authorization = authorization;
 	return options;
 }
 
