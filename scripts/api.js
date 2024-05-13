@@ -287,19 +287,8 @@ function setApiUri(options) {
 function setRequestHeaders(options) {
     let headers = options.headers || {};
     headers = mergeJSON(headers, {"Content-Type": "application/json"});
+    headers = mergeJSON(headers, {"Authorization": "Bearer " + config.get("accessToken")});
     options.headers = headers;
-    return options;
-}
-
-function setAuthorization(options) {
-    sys.logs.debug('[mercadopago] Setting header token oauth');
-    let authorization = options.authorization || {};
-    authorization = mergeJSON(authorization, {
-        type: "oauth2",
-        accessToken: config.get("accessToken"),
-        headerPrefix: "Bearer"
-    });
-    options.authorization = authorization;
     return options;
 }
 
